@@ -1,0 +1,24 @@
+{
+  "name": "ai-assistant",
+  "version": "0.0.1",
+  "description": "AI assistant powered by ChatGPT",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsthechad/ai-assistant.git"
+  },
+  "keywords": [
+    "AI",
+    "ChatGPT",
+    "assistant"
+  ],
+  "author": "ChadC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itsthechad/ai-assistant/issues"
+  },
+  "homepage": "https://github.com/itsthechad/ai-assistant#readme"
+}

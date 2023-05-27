@@ -1,0 +1,38 @@
+name: Deploy to Google Cloud Functions
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - id: auth
+      name: Authorize Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.GCLOUD_SERVICE_KEY }}
+
+    - id: deploy
+      name: Deploy to Google Cloud Functions
+      uses: google-github-actions/deploy-cloud-functions@v1
+      with:
+        credentials: ${{ secrets.GCLOUD_SERVICE_KEY }}
+        name: 'trigger-ai-assistant'
+        runtime: 'nodejs16'
+        source_dir: 'src'
+        region: 'us-east1'
+        project_id: ${{ secrets.GCP_PROJECT }}
+        service_account_email: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
+
+    - name: Print the Cloud Function URL
+      run: echo "${{ steps.deploy.outputs.url }}"
