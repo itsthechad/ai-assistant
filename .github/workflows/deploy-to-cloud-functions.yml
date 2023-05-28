@@ -14,13 +14,13 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - id: auth
       name: Authorize Google Cloud
       uses: google-github-actions/auth@v1
       with:
-        service_account: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
+        credentials_json: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
     - id: deploy
       name: Deploy to Google Cloud Functions
