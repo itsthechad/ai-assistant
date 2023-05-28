@@ -34,7 +34,7 @@ jobs:
       name: Deploy to Google Cloud Functions
       uses: google-github-actions/deploy-cloud-functions@v1
       with:
-        name: 'trigger-ai-assistant'
+        name: 'helloWorld'
         runtime: 'nodejs14'
         source_dir: './'
         region: 'us-east1'
