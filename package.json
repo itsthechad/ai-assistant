@@ -4,6 +4,7 @@
   "description": "AI assistant powered by ChatGPT",
   "main": "src/index.js",
   "scripts": {
+    "start": "functions-framework --target=helloHttp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
