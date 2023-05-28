@@ -36,7 +36,7 @@ jobs:
       with:
         name: 'trigger-ai-assistant'
         runtime: 'nodejs14'
-        source_dir: 'src'
+        source_dir: './'
         region: 'us-east1'
         project_id: ${{ secrets.GCP_PROJECT }}
 
