@@ -39,6 +39,7 @@ jobs:
         source_dir: './'
         region: 'us-east1'
         project_id: ${{ secrets.GCP_PROJECT }}
+        baseURL: 'https://cloudfunctions.googleapis.com/v1'
 
     - name: Print the Cloud Function URL
       run: echo "${{ steps.deploy.outputs.url }}"
