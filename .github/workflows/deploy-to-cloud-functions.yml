@@ -30,16 +30,32 @@ jobs:
       with:
         credentials_json: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
-    - id: deploy
-      name: Deploy to Google Cloud Functions
-      uses: google-github-actions/deploy-cloud-functions@v1
-      with:
-        name: 'helloWorld'
-        runtime: 'nodejs14'
-        source_dir: './'
-        region: 'us-east1'
-        project_id: ${{ secrets.GCP_PROJECT }}
-        baseURL: 'https://cloudfunctions.googleapis.com/v2'
+    # - id: deploy
+    #   name: Deploy to Google Cloud Functions
+    #   uses: google-github-actions/deploy-cloud-functions@v1
+    #   with:
+    #     name: 'helloWorld'
+    #     runtime: 'nodejs14'
+    #     source_dir: './'
+    #     region: 'us-east1'
+    #     project_id: ${{ secrets.GCP_PROJECT }}
 
-    - name: Print the Cloud Function URL
-      run: echo "${{ steps.deploy.outputs.url }}"
+    # - name: Print the Cloud Function URL
+    #   run: echo "${{ steps.deploy.outputs.url }}"
+
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v1'
+      with:
+        version: '432.0.0'
+
+    - name: 'Deploy'
+      run: > 
+        gcloud
+        functions
+        deploy
+        helloWorld
+        --project_id=${{ secrets.GCP_PROJECT }}
+        --region=us-east1
+        --source=.
+        --runtime=nodejs16
+        --gen2
