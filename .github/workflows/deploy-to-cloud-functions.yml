@@ -54,7 +54,7 @@ jobs:
         functions
         deploy
         helloWorld
-        --project_id=${{ secrets.GCP_PROJECT }}
+        --project=${{ secrets.GCP_PROJECT }}
         --region=us-east1
         --source=.
         --runtime=nodejs16
