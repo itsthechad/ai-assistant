@@ -60,3 +60,4 @@ jobs:
         --runtime=nodejs16
         --gen2
         --trigger-http
+        --allow-unauthenticated
